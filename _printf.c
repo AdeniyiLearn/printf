@@ -2,15 +2,9 @@
 
 /**
  * _printf - funtion prints like printf
- *
- *
  * @format: first constant string parameter
- *
- *
  * Return: 0 if succesful
- *
  */
-
 int _printf(const char *format, ...)
 {
 	char num;
@@ -19,7 +13,6 @@ int _printf(const char *format, ...)
 	va_list arg;
 
 	va_start(arg, format);
-
 	for (count = 0; count < len; count++)
 	{
 		/*print string without formats*/
@@ -30,25 +23,33 @@ int _printf(const char *format, ...)
 		/*encounter with % and subsequents specifiers*/
 		else
 		{
-			count += 1;
-
-			/*character formating*/
+		count += 1;
 			if (*(format + (count)) == 'c')
 			{
 				num = va_arg(arg, int);
-				_putchar(num);
+				if (num == '\0')
+				{
+					continue;
+				}
+				else
+				{
+					_putchar(num);
+				}
 			}
-
-			/*string formatting*/
 			else if (*(format + (count)) == 's')
 			{
 				string = va_arg(arg, char *);
-
-				do {
-					_putchar(*string);
-				} while (*string++);
+				if (string == NULL)
+				{
+					continue;
+				}
+				else
+				{
+					string_put(string);
+				}
 			}
 		}
+
 	}
 	return (0);
 }

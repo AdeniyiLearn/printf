@@ -9,5 +9,6 @@
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _strlen(const char *s);
+int string_put(char *string);
 
 #endif /* MAIN_H */
