@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int pc1 = 0, pc2 = 0, pc3 = 0;
 	char num;
 	char *string;
-	int count, len = _strlen(format);
+	int count, digit, len = _strlen(format);
 	va_list arg;
 
 	va_start(arg, format);
@@ -57,6 +57,12 @@ int _printf(const char *format, ...)
 						string_put(string);
 					}
 					pc3++;
+				}
+				/*formatting decimal*/
+				else if (*(format + (count)) == 'd' || *(format + (count)) == 'i' )
+				{
+				digit = va_arg(arg, int);
+				digital(digit);
 				}
 			}
 
