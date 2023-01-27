@@ -10,5 +10,6 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int _strlen(const char *s);
 int string_put(char *string);
+int digital(int pin);
 
 #endif /* MAIN_H */

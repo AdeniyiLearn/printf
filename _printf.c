@@ -7,6 +7,7 @@
  */
 int _printf(const char *format, ...)
 {
+	int pc1 = 0, pc2 = 0, pc3 = 0;
 	char num;
 	char *string;
 	int count, len = _strlen(format);
@@ -19,6 +20,7 @@ int _printf(const char *format, ...)
 		if (*(format + count) != '%')
 		{
 			_putchar(*(format + count));
+			pc1++;
 		}
 		/*encounter with % and subsequents specifiers*/
 		else
@@ -35,6 +37,7 @@ int _printf(const char *format, ...)
 				{
 					_putchar(num);
 				}
+				pc2++;
 			}
 			else if (*(format + (count)) == 's')
 			{
@@ -47,9 +50,11 @@ int _printf(const char *format, ...)
 				{
 					string_put(string);
 				}
+				pc3++;
 			}
 		}
 
 	}
-	return (count);
+	va_end(arg);
+	return (pc1 + pc2 + pc3);
 }
