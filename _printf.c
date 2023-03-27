@@ -9,16 +9,18 @@ int _printf(const char *format, ...)
 {
 	char *string;
 	int count, num, digit;
+	unsigned int dot;
 	va_list arg;
 
+	count = 0;
 	va_start(arg, format);
 	for (; *format != '\0'; format++)
 	{
-		count++;
 		while (*format != '%')
 		{
 			_putchar(*format);
 			format++;
+			count++;
 		}
 		format++;
 		switch (*format)
@@ -26,6 +28,7 @@ int _printf(const char *format, ...)
 			case 'c':
 				num = va_arg(arg, int);
 				_putchar(num);
+				count++;
 				break;
 			case 's':
 				string = va_arg(arg, char *);
@@ -37,7 +40,7 @@ int _printf(const char *format, ...)
 				break;
 			case 'b':
 				digit = va_arg(arg, int);
-				bina(digit);
+				count += bina(digit);
 				break;
 			default:
 				break;

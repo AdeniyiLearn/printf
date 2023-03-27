@@ -25,10 +25,14 @@ int _strlen(const char *s)
 
 int string_put(char *string)
 {
+	int i;
+
+	i = 0;
 	do {
+		i++;
 		_putchar(*string);
 	} while (*string++);
-	return (0);
+	return (i);
 }
 
 /**

@@ -12,6 +12,6 @@ int _printf(const char *format, ...);
 int _strlen(const char *s);
 int string_put(char *string);
 int digital(int pin);
-int bina(int x);
+int bina(unsigned int a);
 
 #endif /* MAIN_H */
