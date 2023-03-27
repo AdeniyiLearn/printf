@@ -6,10 +6,10 @@
  * Return: number of printed character
  */
 
-int bina(unsigned int num)
+int bina(unsigned long int num)
 {
 	unsigned long int con, retain, *intarray, count = 0, len = 0, num_copy;
-	unsigned long int retain_copy, new_count;
+	unsigned long int new_count;
 
 	num_copy = num;
 /* Get number of time divided for array size*/
@@ -32,10 +32,9 @@ int bina(unsigned int num)
 
 	/* reverse the binary*/
 	new_count = count - 1;
-	while (new_count >= 0)
+	while (new_count--)
 	{
-	printf("%d", intarray[new_count]);
-	new_count--;
+	_putchar(intarray[new_count] + '0');
 	}
 	free(intarray);
 	return (len);

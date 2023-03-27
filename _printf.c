@@ -9,7 +9,6 @@ int _printf(const char *format, ...)
 {
 	char *string;
 	int count, num, digit;
-	unsigned int dot;
 	va_list arg;
 
 	count = 0;
