@@ -7,44 +7,47 @@
  */
 int _printf(const char *format, ...)
 {
-	char *string;
-	int count, num, digit;
-	va_list arg;
+	int word_count = 0, num = 0;
+	char letter, *word;
+	va_list args;
 
-	count = 0;
-	va_start(arg, format);
-	for (; *format != '\0'; format++)
+	va_start(args, format);
+
+	while (format[num])
 	{
-		while (*format != '%')
+
+		if (format[num]== '\0')
 		{
-			_putchar(*format);
-			format++;
-			count++;
+			return (0);
 		}
-		format++;
-		switch (*format)
+		if (format[num] == '%')
 		{
-			case 'c':
-				num = va_arg(arg, int);
-				_putchar(num);
-				count++;
-				break;
-			case 's':
-				string = va_arg(arg, char *);
-				string_put(string);
-				break;
-			case 'd':
-				digit = va_arg(arg, int);
-				digital(digit);
-				break;
-			case 'b':
-				digit = va_arg(arg, int);
-				count += bina(digit);
-				break;
-			default:
-				break;
+		switch (format[num + 1])
+		{
+		case '%':
+			word_count += _putchar('%');
+			break;
+		case 'c':
+			letter = (char) va_arg(args, int);
+			word_count += _putchar(letter);
+			break;
+		case 's':
+			word = va_arg(args, char *);
+			word_count += _puts(word);
+			break;
+
+		default:
+
+			break;
 		}
+		num++; /* to move to the next xter after 's' or 'c' of specifier */
+		}
+		else
+		{
+			word_count += _putchar(format[num]);
+		}
+		num++;
 	}
-	va_end(arg);
-	return (count);
+	va_end(args);
+	return (word_count);
 }

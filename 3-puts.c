@@ -3,18 +3,22 @@
  * _puts - function prints strings and prints a new line aftre
  * @str: pointer to strings of character
  *
- * Return: Void
+ * Return: the length of strings
  */
 
-void _puts(char *str)
+int _puts(char *str)
 {
-	char try;
-
-	do {
-		if (*str != '\0')
-		{
-			try = *str;
-			_putchar(try);
-		}
-	} while (*str++);
+	char letter;
+	int count = 0;
+	
+	while(*(str + count))
+	{
+	letter = str[count];
+	if (letter != '\0')
+	{
+		putchar(letter);
+		count++;
+	}
+	}
+	return (count);
 }
